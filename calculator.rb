@@ -87,7 +87,7 @@ RSpec.describe Calculator do
 
     it 'should work with negative numbers' do
       calculator = Calculator.new
-      expect(calculator.square(-4)). to eq(16)
+      expect(calculator.square(-2)). to eq(4)
     end
 
 
