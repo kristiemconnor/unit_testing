@@ -5,11 +5,11 @@ class ChangeMachine
   def change(num)
     coins_available = [25, 10, 5, 1]
     coins = []
-  if num < 5
-    num.times do
-      coins << 1
-    end
-    return coins
+    if num < 5
+      num.times do
+        coins << 1
+      end
+      return coins
 
     # if num == 1
     #   return [1]
@@ -55,53 +55,32 @@ RSpec.describe ChangeMachine do
       machine = ChangeMachine.new
       expect(machine.change(2)).to eq([1, 1])
     end
-    it 'should return [1, 1, 1] when given 3' do
-      machine = ChangeMachine.new
-      expect(machine.change(3)).to eq([1, 1, 1])
-    end
-    it 'should return [1, 1, 1, 1] when given 4' do
-      machine = ChangeMachine.new
-      expect(machine.change(4)).to eq([1, 1, 1, 1])
-    end
     it 'should return [5] when given 5' do
       machine = ChangeMachine.new
       expect(machine.change(5)).to eq([5])
     end
-    # it 'should return [5, 1, 1, 1] when given 8' do
-    #   machine = ChangeMachine.new
-    #   expect(machine.change(8)).to eq([5, 1, 1, 1])
-    # end
+    it 'should return [5, 1] when given 6' do
+      machine = ChangeMachine.new
+      expect(machine.change(6)).to eq([5, 1])
+    end
     it 'should return [10] when given 10' do
       machine = ChangeMachine.new
       expect(machine.change(10)).to eq([10])
     end
-    it 'should return [10, 1, 1, 1] when given 13' do
+    it 'should return [10, 5, 1, 1, 1, 1] when given 19' do
       machine = ChangeMachine.new
-      expect(machine.change(13)). to eq([10, 1, 1, 1])
+      expect(machine.change(19)). to eq([10, 5, 1, 1, 1, 1])
     end
-    it 'should return [10, 5] when given 15' do
-      machine = ChangeMachine.new
-      expect(machine.change(15)).to eq([10, 5])
-    end
-    it 'should return [10, 5, 1] when given 16' do
-      machine = ChangeMachine.new
-      expect(machine.change(16)). to eq([10, 5, 1])
-    end
-    # it 'should return [10, 5, 1, 1, 1] when given 18' do
-    #   machine = ChangeMachine.new
-    #   expect(machine.change(18)).to eq([10, 5, 1, 1, 1])
-    # end
-    # it 'should return [10, 10] when given 20' do
-    #   machine = ChangeMachine.new
-    #   expect(machine.change(20)).to eq([10, 10])
-    # end
     it 'should return [10, 10, 1, 1, 1] when given 23' do
       machine = ChangeMachine.new
       expect(machine.change(23)).to eq([10, 10, 1, 1, 1])
     end
-    # it 'should return [25] when given 25' do
-    #   machine = ChangeMachine.new
-    #   expect(machine.change(25)).to eq([25])
-    # end
+    it 'should return [25] when given 25' do
+      machine = ChangeMachine.new
+      expect(machine.change(25)).to eq([25])
+    end
+    it 'should return [25, 25, 25, 25, 10, 5, 1, 1, 1, 1]' do
+      machine = ChangeMachine.new
+      expect(machine.change(119)).to eq([25, 25, 25, 25, 10, 5, 1, 1, 1, 1])
   end
 end  
